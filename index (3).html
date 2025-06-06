@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tanya Gupta - Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #1a1a1a;
+        color: #ffffff;
+        line-height: 1.6;
+      }
+
+      .container {
+        display: flex;
+        min-height: 100vh;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+        gap: 30px;
+      }
+
+      /* Sidebar Styles */
+      .sidebar {
+        background: #2a2a2a;
+        border-radius: 20px;
+        padding: 30px;
+        width: 350px;
+        height: fit-content;
+        position: sticky;
+        top: 20px;
+      }
+
+      .profile-section {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .profile-image {
+        width: 120px;
+        height: 120px;
+        border-radius: 20px;
+        background: #3a3a3a;
+        margin: 0 auto 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .profile-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .status-indicator {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        width: 15px;
+        height: 15px;
+        background: #00ff00;
+        border-radius: 50%;
+        border: 3px solid #2a2a2a;
+      }
+
+      .profile-name {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .profile-title {
+        color: #888;
+        font-size: 14px;
+      }
+
+      .contact-info {
+        margin-top: 30px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 15px 0;
+        border-bottom: 1px solid #3a3a3a;
+      }
+
+      .contact-item:last-child {
+        border-bottom: none;
+      }
+
+      .contact-icon {
+        width: 20px;
+        margin-right: 15px;
+        color: #ffd700;
+      }
+
+      .contact-details h4 {
+        font-size: 12px;
+        color: #888;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+      }
+
+      .contact-details p {
+        font-size: 14px;
+        color: #fff;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 30px;
+      }
+
+      .social-links a {
+        color: #888;
+        font-size: 20px;
+        transition: color 0.3s;
+      }
+
+      .social-links a:hover {
+        color: #ffd700;
+      }
+
+      /* Organization Section */
+      .organization-section {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #3a3a3a;
+      }
+
+      .organization-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #ffd700;
+        margin-bottom: 15px;
+      }
+
+      .organization-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .organization-icon {
+        width: 30px;
+        height: 30px;
+        background: #3a3a3a;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+      }
+
+      .organization-icon i {
+        color: #ffd700;
+      }
+
+      .organization-name {
+        font-size: 14px;
+        color: #fff;
+      }
+
+      /* Main Content Styles */
+      .main-content {
+        flex: 1;
+        background: #2a2a2a;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+
+      .navbar {
+        background: #333;
+        padding: 20px 30px;
+        border-radius: 20px 20px 0 0;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: #888;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a.active,
+      .nav-links a:hover {
+        color: #ffd700;
+      }
+
+      .content {
+        padding: 40px;
+      }
+
+      .section {
+        margin-bottom: 50px;
+      }
+
+      .section-title {
+        font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: #ffd700;
+      }
+
+      .about-text {
+        color: #ccc;
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 30px;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-top: 30px;
+      }
+
+      .service-card {
+        background: #333;
+        padding: 30px;
+        border-radius: 15px;
+        transition: transform 0.3s;
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .service-icon {
+        width: 50px;
+        height: 50px;
+        background: #ffd700;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .service-icon i {
+        font-size: 24px;
+        color: #1a1a1a;
+      }
+
+      .service-title {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      .service-description {
+        color: #ccc;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 20px;
+        margin-top: 30px;
+      }
+
+      .skill-item {
+        background: #333;
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        transition: transform 0.3s;
+      }
+
+      .skill-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .skill-icon {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 15px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+      }
+
+      .skill-icon.laravel {
+        background: linear-gradient(135deg, #ff2d20, #ff6b35);
+        color: white;
+      }
+
+      .skill-icon.java {
+        background: linear-gradient(135deg, #ed8b00, #f89820);
+        color: white;
+      }
+
+      .skill-icon.vue {
+        background: linear-gradient(135deg, #4fc08d, #42b883);
+        color: white;
+      }
+
+      .skill-icon.postman {
+        background: linear-gradient(135deg, #ff6c37, #ff8c42);
+        color: white;
+      }
+
+      .skill-name {
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      /* Projects Styles */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-top: 30px;
+      }
+
+      .project-card {
+        background: #333;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s;
+        cursor: pointer;
+      }
+
+      .project-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .project-image {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 48px;
+        color: white;
+        position: relative;
+      }
+
+      .project-image.nagarik {
+        background: linear-gradient(135deg, #4a5568, #2d3748);
+      }
+
+      .project-image.ambition {
+        background: linear-gradient(135deg, #000000, #1a1a1a);
+      }
+
+      .project-image.soclair {
+        background: linear-gradient(135deg, #ffffff, #f7fafc);
+        color: #333;
+      }
+
+      .project-image.tokma {
+        background: linear-gradient(135deg, #ffffff, #f7fafc);
+        color: #e53e3e;
+      }
+
+      .project-image.saara {
+        background: linear-gradient(135deg, #ed64a6, #d53f8c);
+      }
+
+      .project-image.ifood {
+        background: linear-gradient(135deg, #e53e3e, #c53030);
+      }
+
+      .project-image.merodate {
+        background: linear-gradient(135deg, #ffffff, #f7fafc);
+        color: #805ad5;
+      }
+
+      .project-info {
+        padding: 20px;
+      }
+
+      .project-name {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .project-type {
+        color: #888;
+        font-size: 14px;
+      }
+
+      /* Contact Styles */
+      .contact-section {
+        margin-bottom: 40px;
+      }
+
+      .map-container {
+        width: 100%;
+        height: 400px;
+        border-radius: 15px;
+        overflow: hidden;
+        margin-bottom: 40px;
+        background: #333;
+        position: relative;
+      }
+
+      .map-placeholder {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #2d3748, #4a5568);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: #fff;
+      }
+
+      .location-info {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 15px;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+      }
+
+      .location-info h3 {
+        color: #ffd700;
+        margin-bottom: 5px;
+      }
+
+      .location-info p {
+        color: #ccc;
+        font-size: 14px;
+      }
+
+      .contact-form {
+        background: #333;
+        padding: 30px;
+        border-radius: 15px;
+      }
+
+      .form-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 30px;
+        color: #fff;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 15px;
+        background: #2a2a2a;
+        border: 2px solid #444;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 16px;
+        transition: border-color 0.3s;
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: #ffd700;
+      }
+
+      .form-input::placeholder {
+        color: #888;
+      }
+
+      .form-textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .submit-btn {
+        background: #ffd700;
+        color: #1a1a1a;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .submit-btn:hover {
+        background: #ffed4e;
+      }
+
+      .submit-btn:disabled {
+        background: #888;
+        cursor: not-allowed;
+      }
+
+      .submit-btn.loading {
+        background: #888;
+        cursor: not-allowed;
+      }
+
+      .loading-spinner {
+        display: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #1a1a1a;
+        border-top: 2px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-right: 10px;
+      }
+
+      .submit-btn.loading .loading-spinner {
+        display: inline-block;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      /* Resume Styles */
+      .content-section {
+        display: block;
+      }
+
+      .resume-header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+        border-bottom: 2px solid #3a3a3a;
+      }
+
+      .resume-name {
+        font-size: 36px;
+        font-weight: 700;
+        color: #ffd700;
+        margin-bottom: 10px;
+      }
+
+      .resume-title {
+        font-size: 18px;
+        color: #ccc;
+        margin-bottom: 15px;
+      }
+
+      .resume-contact {
+        font-size: 14px;
+        color: #888;
+      }
+
+      .resume-contact a {
+        color: #ffd700;
+        text-decoration: none;
+      }
+
+      .resume-section {
+        margin-bottom: 35px;
+      }
+
+      .resume-section-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #ffd700;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        border-bottom: 1px solid #3a3a3a;
+        padding-bottom: 10px;
+      }
+
+      .resume-text {
+        color: #ccc;
+        line-height: 1.7;
+        margin-bottom: 15px;
+      }
+
+      .experience-item,
+      .education-item,
+      .project-item {
+        margin-bottom: 25px;
+        padding: 20px;
+        background: #333;
+        border-radius: 10px;
+      }
+
+      .experience-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .experience-header h4 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #fff;
+      }
+
+      .experience-period,
+      .education-period {
+        font-size: 14px;
+        color: #ffd700;
+        font-weight: 500;
+      }
+
+      .experience-company,
+      .education-school {
+        color: #888;
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+
+      .experience-list {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .experience-list li {
+        color: #ccc;
+        margin-bottom: 8px;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .experience-list li::before {
+        content: "•";
+        color: #ffd700;
+        position: absolute;
+        left: 0;
+      }
+
+      .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .skill-tag {
+        background: #ffd700;
+        color: #1a1a1a;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .languages-list {
+        display: flex;
+        gap: 20px;
+      }
+
+      .language-item {
+        color: #ccc;
+        font-size: 16px;
+      }
+
+      .project-item h4 {
+        color: #ffd700;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      /* Form validation */
+      .form-input.error {
+        border-color: #e53e3e;
+      }
+
+      .error-message {
+        color: #e53e3e;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+
+      .success-message {
+        color: #00ff00;
+        font-size: 14px;
+        margin-top: 15px;
+        padding: 10px;
+        background: rgba(0, 255, 0, 0.1);
+        border-radius: 5px;
+        display: none;
+      }
+
+      .error-alert {
+        color: #e53e3e;
+        font-size: 14px;
+        margin-top: 15px;
+        padding: 10px;
+        background: rgba(229, 62, 62, 0.1);
+        border-radius: 5px;
+        display: none;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+          padding: 10px;
+        }
+
+        .sidebar {
+          width: 100%;
+          position: static;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          gap: 15px;
+        }
+
+        .content {
+          padding: 20px;
+        }
+
+        .services-grid,
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .experience-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .resume-name {
+          font-size: 28px;
+        }
+
+        .skills-list {
+          justify-content: center;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="profile-section">
+          <div class="profile-image">
+            <img
+              src="tanya.jpeg"
+              alt="Tanya Gupta"
+            />
+            <div class="status-indicator"></div>
+          </div>
+          <h2 class="profile-name">Tanya Gupta</h2>
+          <p class="profile-title">Web Developer</p>
+        </div>
+
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-envelope contact-icon"></i>
+            <div class="contact-details">
+              <h4>Email</h4>
+              <p>tanyagupta172510@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone contact-icon"></i>
+            <div class="contact-details">
+              <h4>Phone</h4>
+              <p>+91 9546956660</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt contact-icon"></i>
+            <div class="contact-details">
+              <h4>Location</h4>
+              <p>Jamshedpur, India</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Organizations Section -->
+        <div class="organization-section">
+          <h3 class="organization-title">Organizations</h3>
+          <div class="organization-item">
+            <div class="organization-icon">
+              <i class="fas fa-building"></i>
+            </div>
+            <p class="organization-name">Aruvaa Technologies</p>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/tanya1725"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a href="#"><i class="fab fa-google"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <nav class="navbar">
+          <ul class="nav-links">
+            <li><a href="#" class="active" data-section="about">About</a></li>
+            <li><a href="#" data-section="resume">Resume</a></li>
+            <li><a href="#" data-section="projects">Projects</a></li>
+            <li><a href="#" data-section="blog">Blog</a></li>
+            <li><a href="#" data-section="contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="content">
+          <!-- About Section -->
+          <div id="about" class="content-section">
+            <section class="section">
+              <h1 class="section-title">About Me</h1>
+              <p class="about-text">
+                Versatile web developer with expertise across multiple
+                programming languages and frameworks including Java, Laravel,
+                and Vue.js. Adept at full-stack development, combining back-end
+                strength in Java and Laravel with front-end proficiency in
+                Vue.js to create comprehensive web solutions. Passionate about
+                creating responsive, user-friendly applications that deliver
+                exceptional user experiences.
+              </p>
+              <p class="about-text">
+                With a strong foundation in modern web technologies and a keen
+                eye for detail, I specialize in building scalable web
+                applications, RESTful APIs, and interactive user interfaces. My
+                experience spans from database design to front-end
+                implementation, ensuring end-to-end project delivery with clean,
+                maintainable code.
+              </p>
+            </section>
+
+            <!-- What I'm Doing Section -->
+            <section class="section">
+              <h2 class="section-title">What I'm Doing</h2>
+              <div class="services-grid">
+                <div class="service-card">
+                  <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                  </div>
+                  <h3 class="service-title">Web Development</h3>
+                  <p class="service-description">
+                    Professional development of responsive websites and web
+                    applications using modern frameworks.
+                  </p>
+                </div>
+                <div class="service-card">
+                  <div class="service-icon">
+                    <i class="fas fa-server"></i>
+                  </div>
+                  <h3 class="service-title">Backend Development</h3>
+                  <p class="service-description">
+                    Robust server-side development with Laravel and Java for
+                    scalable applications.
+                  </p>
+                </div>
+                <div class="service-card">
+                  <div class="service-icon">
+                    <i class="fas fa-database"></i>
+                  </div>
+                  <h3 class="service-title">Database Design</h3>
+                  <p class="service-description">
+                    Efficient database architecture and optimization for
+                    high-performance applications.
+                  </p>
+                </div>
+                <div class="service-card">
+                  <div class="service-icon">
+                    <i class="fas fa-cogs"></i>
+                  </div>
+                  <h3 class="service-title">API Development</h3>
+                  <p class="service-description">
+                    RESTful API design and integration for seamless data
+                    communication.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="section">
+              <h2 class="section-title">Skills</h2>
+              <div class="skills-grid">
+                <div class="skill-item">
+                  <div class="skill-icon laravel">
+                    <i class="fab fa-laravel"></i>
+                  </div>
+                  <p class="skill-name">Laravel</p>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-icon java">
+                    <i class="fab fa-java"></i>
+                  </div>
+                  <p class="skill-name">Java</p>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-icon vue">
+                    <i class="fab fa-vuejs"></i>
+                  </div>
+                  <p class="skill-name">Vue.js</p>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-icon postman">
+                    <i class="fas fa-rocket"></i>
+                  </div>
+                  <p class="skill-name">Postman</p>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Resume Section -->
+          <div id="resume" class="content-section" style="display: none">
+            <section class="section">
+              <h1 class="section-title">Resume</h1>
+
+              <!-- Personal Info -->
+              <div class="resume-header">
+                <h2 class="resume-name">TANYA GUPTA</h2>
+                <p class="resume-title">Web Developer</p>
+                <div class="resume-contact">
+                  <span>9546956660</span> |
+                  <span>tanyagupta172510@gmail.com</span> |
+                  <span>Jamshedpur</span> |
+                  <a href="https://github.com/tanya1725" target="_blank"
+                    >https://github.com/tanya1725</a
+                  >
+                </div>
+              </div>
+
+              <!-- About Me -->
+              <div class="resume-section">
+                <h3 class="resume-section-title">ABOUT ME</h3>
+                <p class="resume-text">
+                  Versatile web developer with expertise across multiple
+                  programming languages and frameworks including Java, Laravel,
+                  and Vue.js. Adept at full-stack development, combining
+                  back-end strength in Java and Laravel with front-end
+                  proficiency in Vue.js to create comprehensive web solutions.
+                </p>
+              </div>
+
+              <!-- Work Experience -->
+              <div class="resume-section">
+                <h3 class="resume-section-title">WORK EXPERIENCE</h3>
+                <div class="experience-item">
+                  <div class="experience-header">
+                    <h4>Web Developer</h4>
+                    <span class="experience-period">2024 - Continue</span>
+                  </div>
+                  <p class="experience-company">
+                    Aruvaa Technology | Jamshedpur
+                  </p>
+                  <ul class="experience-list">
+                    <li>
+                      Developed and integrated WhatsApp Cloud API with Vue.js
+                      and Laravel backend
+                    </li>
+                    <li>
+                      Created import/export functionality for fields and
+                      layouts, improving development efficiency
+                    </li>
+                    <li>
+                      Implemented multi-tenant architecture for scalable SaaS
+                      applications
+                    </li>
+                    <li>
+                      Built responsive UI components using DevExtreme and
+                      Tailwind CSS
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Education -->
+              <div class="resume-section">
+                <h3 class="resume-section-title">EDUCATION</h3>
+                <div class="education-item">
+                  <h4>Bachelor of Computer Application</h4>
+                  <p class="education-school">Jamshedpur Women's University</p>
+                  <span class="education-period">2021 - 2024</span>
+                </div>
+                <div class="education-item">
+                  <h4>Intermediate</h4>
+                  <p class="education-school">Jamshedpur Women's College</p>
+                  <span class="education-period">2019 - 2021</span>
+                </div>
+              </div>
+
+              <!-- Skills -->
+              <div class="resume-section">
+                <h3 class="resume-section-title">SKILLS</h3>
+                <div class="skills-list">
+                  <span class="skill-tag">Vue.js</span>
+                  <span class="skill-tag">Laravel</span>
+                  <span class="skill-tag">Java</span>
+                  <span class="skill-tag">HTML</span>
+                  <span class="skill-tag">CSS</span>
+                  <span class="skill-tag">MySQL</span>
+                  <span class="skill-tag">Git/GitHub</span>
+                  <span class="skill-tag">Postman</span>
+                </div>
+              </div>
+
+              <!-- Languages -->
+              <div class="resume-section">
+                <h3 class="resume-section-title">LANGUAGES</h3>
+                <div class="languages-list">
+                  <span class="language-item">Hindi</span>
+                  <span class="language-item">English</span>
+                </div>
+              </div>
+
+              <!-- Internship -->
+              <div class="resume-section">
+                <h3 class="resume-section-title">INTERNSHIP</h3>
+                <div class="experience-item">
+                  <h4>Web Development Intern</h4>
+                  <p class="experience-company">
+                    Agamya Eduventure | Jamshedpur
+                  </p>
+                  <p class="resume-text">
+                    Completed a comprehensive web development internship,
+                    contributing to multiple challenging projects including
+                    functional clones of popular platforms like Zomato and
+                    Spotify. Demonstrated versatility in implementing responsive
+                    designs, user authentication systems, and interactive web
+                    elements.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Projects Section -->
+          <div id="projects" class="content-section" style="display: none">
+            <section class="section">
+              <h1 class="section-title">Projects</h1>
+              <div class="projects-grid">
+                <div class="project-card">
+                  <div class="project-image nagarik">
+                    <i class="fas fa-hospital"></i>
+                  </div>
+                  <div class="project-info">
+                    <h3 class="project-name">Nursing Home Management System</h3>
+                    <p class="project-type">Java Application</p>
+                  </div>
+                </div>
+                <div class="project-card">
+                  <div class="project-image ambition">
+                    <i class="fas fa-graduation-cap"></i>
+                  </div>
+                  <div class="project-info">
+                    <h3 class="project-name">Component Library</h3>
+                    <p class="project-type">Vue.js Application</p>
+                  </div>
+                </div>
+                <div
+                  class="project-card"
+                  onclick="window.open('https://github.com/tanya1725/spotify', '_blank')"
+                >
+                  <div class="project-image soclair">
+                    <div style="display: flex; gap: 10px">
+                     <img src="https://cdn.worldvectorlogo.com/logos/logo-spotify.svg" alt="spotify Logo" width="150" />
+                      </div>
+                    
+                  </div>
+                  <div class="project-info">
+                    <h3 class="project-name">Spotify Clone</h3>
+                    <p class="project-type">Web Application</p>
+                  </div>
+                </div>
+                <div class="project-card">
+                  <div class="project-image tokma">
+                     <img src="https://cdn.worldvectorlogo.com/logos/google-calendar-icon-2020-.svg" alt="calendar Logo" width="150" />
+                  </div>
+                  <div class="project-info">
+                    <h3 class="project-name">Work Calendar</h3>
+                    <p class="project-type">Vue.js Application</p>
+                  </div>
+                </div>
+                <div
+                  class="project-card"
+                  onclick="window.open('https://github.com/tanya1725/zomatoweb', '_blank')"
+                >
+                  <div class="project-image ifood">
+                 <img src="https://cdn.worldvectorlogo.com/logos/zomato-1.svg" alt="Zomato Logo" width="150" />
+
+                  </div>
+                  <div class="project-info">
+                    <h3 class="project-name">Zomato clone</h3>
+                    <p class="project-type">Web Application</p>
+                  </div>
+                </div>
+                <div
+                  class="project-card"
+                  onclick="window.open('https://github.com/tanya1725/musicweb', '_blank')"
+                >
+                  <div class="project-image merodate">
+                    <div style="display: flex; align-items: center; gap: 10px">
+                      <div style="font-size: 32px">♡</div>
+<img src="https://cdn.worldvectorlogo.com/logos/kabeers-music.svg" alt="music Logo" width="150" />
+                    </div>
+                  </div>
+                  <div class="project-info">
+                    <h3 class="project-name">Music App</h3>
+                    <p class="project-type">Web Application</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Blog Section -->
+          <div id="blog" class="content-section" style="display: none">
+            <section class="section">
+              <h1 class="section-title">Blog</h1>
+              <p class="about-text">Blog section coming soon...</p>
+            </section>
+          </div>
+
+          <!-- Contact Section -->
+          <div id="contact" class="content-section" style="display: none">
+            <section class="section">
+              <h1 class="section-title">Contact</h1>
+
+              <!-- Map Section -->
+              <div class="contact-section">
+                <div class="map-container">
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117711.91484915413!2d86.09629465820312!3d22.7840658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f5e31989f0e2b5%3A0xeeec8e81ce9b344!2sJamshedpur%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1654321234567!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                  </iframe>
+                  <div class="location-info">
+                    <h3>Jamshedpur</h3>
+                    <p>Jharkhand, India</p>
+                    <p>View larger map</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Contact Form -->
+              <div class="contact-form">
+                <h2 class="form-title">Contact Form</h2>
+                <form id="contactForm">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        id="fullName"
+                        class="form-input"
+                        placeholder="Full name"
+                        required
+                      />
+                      <div class="error-message" id="fullNameError"></div>
+                    </div>
+                    <div class="form-group">
+                      <input
+                        type="email"
+                        id="email"
+                        class="form-input"
+                        placeholder="Email address"
+                        required
+                      />
+                      <div class="error-message" id="emailError"></div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      id="subject"
+                      class="form-input"
+                      placeholder="Subject"
+                      required
+                    />
+                    <div class="error-message" id="subjectError"></div>
+                  </div>
+                  <div class="form-group">
+                    <textarea
+                      id="message"
+                      class="form-input form-textarea"
+                      placeholder="Your message"
+                      required
+                    ></textarea>
+                    <div class="error-message" id="messageError"></div>
+                  </div>
+                  <button type="submit" id="submitBtn" class="submit-btn" disabled>
+                    <div class="loading-spinner"></div>
+                    <i class="fas fa-paper-plane" style="margin-right: 10px"></i>
+                    <span id="btnText">Send Message</span>
+                  </button>
+                  <div class="success-message" id="successMessage">
+                    Thank you! Your message has been sent successfully. I'll get back to you soon.
+                  </div>
+                  <div class="error-alert" id="errorAlert">
+                    Sorry, there was an error sending your message. Please try again or contact me directly.
+                  </div>
+                </form>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      // Navigation functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const navLinks = document.querySelectorAll(".nav-links a");
+        const sections = document.querySelectorAll(".content-section");
+
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            // Remove active class from all links
+            navLinks.forEach((l) => l.classList.remove("active"));
+            // Add active class to clicked link
+            this.classList.add("active");
+
+            // Hide all sections
+            sections.forEach((section) => (section.style.display = "none"));
+
+            // Show selected section
+            const targetSection = this.getAttribute("data-section");
+            document.getElementById(targetSection).style.display = "block";
+          });
+        });
+
+        // Form validation
+        const contactForm = document.getElementById("contactForm");
+        const fullNameInput = document.getElementById("fullName");
+        const emailInput = document.getElementById("email");
+        const subjectInput = document.getElementById("subject");
+        const messageInput = document.getElementById("message");
+        const submitBtn = document.getElementById("submitBtn");
+        const btnText = document.getElementById("btnText");
+        const successMessage = document.getElementById("successMessage");
+        const errorAlert = document.getElementById("errorAlert");
+        
+        // Error message elements
+        const fullNameError = document.getElementById("fullNameError");
+        const emailError = document.getElementById("emailError");
+        const subjectError = document.getElementById("subjectError");
+        const messageError = document.getElementById("messageError");
+        
+        // Validation functions
+        function validateFullName() {
+          if (fullNameInput.value.trim().length < 2) {
+            fullNameInput.classList.add("error");
+            fullNameError.textContent = "Please enter a valid name (at least 2 characters)";
+            return false;
+          } else {
+            fullNameInput.classList.remove("error");
+            fullNameError.textContent = "";
+            return true;
+          }
+        }
+        
+        function validateEmail() {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(emailInput.value.trim())) {
+            emailInput.classList.add("error");
+            emailError.textContent = "Please enter a valid email address";
+            return false;
+          } else {
+            emailInput.classList.remove("error");
+            emailError.textContent = "";
+            return true;
+          }
+        }
+        
+        function validateSubject() {
+          if (subjectInput.value.trim().length < 3) {
+            subjectInput.classList.add("error");
+            subjectError.textContent = "Subject must be at least 3 characters";
+            return false;
+          } else {
+            subjectInput.classList.remove("error");
+            subjectError.textContent = "";
+            return true;
+          }
+        }
+        
+        function validateMessage() {
+          if (messageInput.value.trim().length < 10) {
+            messageInput.classList.add("error");
+            messageError.textContent = "Message must be at least 10 characters";
+            return false;
+          } else {
+            messageInput.classList.remove("error");
+            messageError.textContent = "";
+            return true;
+          }
+        }
+        
+        function validateForm() {
+          const isFullNameValid = validateFullName();
+          const isEmailValid = validateEmail();
+          const isSubjectValid = validateSubject();
+          const isMessageValid = validateMessage();
+          
+          submitBtn.disabled = !(isFullNameValid && isEmailValid && isSubjectValid && isMessageValid);
+        }
+        
+        // Add event listeners for real-time validation
+        fullNameInput.addEventListener("input", validateForm);
+        emailInput.addEventListener("input", validateForm);
+        subjectInput.addEventListener("input", validateForm);
+        messageInput.addEventListener("input", validateForm);
+        
+        // Email sending function using Formspree
+        async function sendEmail(formData) {
+          try {
+            const response = await fetch("https://formspree.io/f/meokeqbk", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                name: formData.fullName,
+                email: formData.email,
+                subject: formData.subject,
+                message: formData.message,
+                _replyto: formData.email,
+              }),
+            });
+
+            return response.ok;
+          } catch (error) {
+            console.error("Error sending email:", error);
+            return false;
+          }
+        }
+        
+        // Form submission
+        contactForm.addEventListener("submit", async function (e) {
+          e.preventDefault();
+          
+          // Final validation check
+          validateForm();
+          
+          if (!submitBtn.disabled) {
+            // Show loading state
+            submitBtn.classList.add("loading");
+            submitBtn.disabled = true;
+            btnText.textContent = "Sending...";
+            
+            // Hide previous messages
+            successMessage.style.display = "none";
+            errorAlert.style.display = "none";
+            
+            // Prepare form data
+            const formData = {
+              fullName: fullNameInput.value.trim(),
+              email: emailInput.value.trim(),
+              subject: subjectInput.value.trim(),
+              message: messageInput.value.trim(),
+            };
+            
+            // Send email
+            const emailSent = await sendEmail(formData);
+            
+            if (emailSent) {
+              // Success
+              successMessage.style.display = "block";
+              contactForm.reset();
+              validateForm(); // Reset validation
+            } else {
+              // Error
+              errorAlert.style.display = "block";
+            }
+            
+            // Reset button state
+            submitBtn.classList.remove("loading");
+            btnText.textContent = "Send Message";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
